@@ -3,6 +3,9 @@ import type {
     Options as TransformOptions,
 } from "@swc/core";
 
+/**
+ * Default transform options.
+ */
 const OPTIONS_TRANSFORM_DEFAULT = {
     jsc: {
         parser: {
@@ -18,6 +21,9 @@ const OPTIONS_TRANSFORM_DEFAULT = {
     sourceMaps: true,
 } as const satisfies TransformOptions;
 
+/**
+ * Default minify options.
+ */
 const OPTIONS_MINIFY_DEFAULT = {
     compress: true,
     mangle: true,

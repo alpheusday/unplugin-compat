@@ -18,6 +18,9 @@ import { minifyPlugin } from "#/plugins/minify";
 import { transformPlugin } from "#/plugins/transform";
 import { name } from "../package.json";
 
+/**
+ * A plugin for JavaScript compatibility.
+ */
 const plugin = (options?: Options): Plugin | Plugin[] => {
     const factory: UnpluginFactory<undefined> = (): UnpluginOptions[] => {
         return [
