@@ -1,0 +1,13 @@
+{
+    "name": "unplugin-compat-test",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "test": "vitest run",
+        "": ""
+    },
+    "dependencies": {
+        "unplugin-compat": "workspace:^",
+        "vitest": "^4.1.6"
+    }
+}

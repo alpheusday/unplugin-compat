@@ -1,0 +1,68 @@
+{
+    "name": "unplugin-compat",
+    "version": "0.1.0",
+    "description": "A plugin for JavaScript compatibility",
+    "keywords": [
+        "compat",
+        "vite",
+        "rolldown",
+        "unplugin",
+        "ts",
+        "typescript",
+        "js",
+        "javascript"
+    ],
+    "homepage": "https://github.com/alpheusday/unplugin-compat",
+    "bugs": "https://github.com/alpheusday/unplugin-compat/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alpheusday/unplugin-compat.git",
+        "directory": "package"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Alpheus",
+        "email": "contact@alphe.us"
+    },
+    "exports": {
+        "./rolldown": {
+            "types": "./dist/rolldown.d.ts",
+            "import": "./dist/rolldown.mjs",
+            "require": "./dist/rolldown.js"
+        },
+        "./vite": {
+            "types": "./dist/vite.d.ts",
+            "import": "./dist/vite.mjs",
+            "require": "./dist/vite.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "main": "./dist/rolldown.js",
+    "module": "./dist/rolldown.mjs",
+    "types": "./dist/rolldown.d.ts",
+    "files": [
+        "dist"
+    ],
+    "dependencies": {
+        "@swc/core": "^1.15.33",
+        "es-toolkit": "^1.40.0",
+        "ts-vista": "~0.2.3",
+        "unplugin": "^3.0.0"
+    },
+    "devDependencies": {
+        "rolldown": "1.0.0",
+        "vite": "8.0.0"
+    },
+    "peerDependencies": {
+        "rolldown": "^1.0.0",
+        "vite": "^8.0.0"
+    },
+    "peerDependenciesMeta": {
+        "rolldown": {
+            "optional": true
+        },
+        "vite": {
+            "optional": true
+        }
+    }
+}
