@@ -1,0 +1,12 @@
+{
+    "name": "example-vite",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build"
+    },
+    "dependencies": {
+        "unplugin-compat": "workspace:^",
+        "vite": "catalog:dev"
+    }
+}

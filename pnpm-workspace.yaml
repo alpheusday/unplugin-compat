@@ -1,6 +1,7 @@
 packages:
     - ./package
     - ./test
+    - ./examples/*
 
 autoInstallPeers: false
 strictPeerDependencies: false

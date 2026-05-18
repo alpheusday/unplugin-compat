@@ -1,0 +1,13 @@
+{
+    "name": "example-rolldown",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "rolldown build -c rolldown.config.ts",
+        "": ""
+    },
+    "dependencies": {
+        "rolldown": "catalog:dev",
+        "unplugin-compat": "workspace:^"
+    }
+}

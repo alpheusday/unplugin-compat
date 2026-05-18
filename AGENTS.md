@@ -27,6 +27,11 @@ This repository is a pnpm workspace.
 
 - `test` - The test
 
+### Examples
+
+- `examples/rolldown` - Rolldown example
+- `examples/vite` - Vite example
+
 ## Code Standards
 
 Language:
