@@ -9,6 +9,7 @@ import type {
 
 import { createUnplugin } from "unplugin";
 
+import { OPTIONS_TRANSFORM_DEFAULT } from "#/consts/swc";
 import { configPlugin } from "#/plugins/config";
 import { minifyPlugin } from "#/plugins/minify";
 import { transformPlugin } from "#/plugins/transform";
@@ -45,4 +46,4 @@ const plugin = (options?: Options): Plugin | Plugin[] => {
 };
 
 export type { MinifyOptions, Options, TransformOptions };
-export { plugin as compat };
+export { OPTIONS_TRANSFORM_DEFAULT, plugin as compat };
