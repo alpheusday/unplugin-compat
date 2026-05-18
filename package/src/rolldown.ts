@@ -1,7 +1,11 @@
 import type { Plugin } from "rolldown";
 import type { UnpluginFactory, UnpluginOptions } from "unplugin";
 
-import type { Options } from "#/@types/options";
+import type {
+    MinifyOptions,
+    Options,
+    TransformOptions,
+} from "#/@types/options";
 
 import { createUnplugin } from "unplugin";
 
@@ -40,4 +44,5 @@ const plugin = (options?: Options): Plugin | Plugin[] => {
     return createUnplugin(factory).rolldown();
 };
 
+export type { MinifyOptions, Options, TransformOptions };
 export { plugin as compat };
