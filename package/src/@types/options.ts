@@ -1,8 +1,9 @@
-import type { Options as SwcOptions } from "@swc/core";
+import type { JsMinifyOptions, Options as SwcOptions } from "@swc/core";
 import type { Format, Partial } from "ts-vista";
 
 type CompleteOptions = {
-    swc: SwcOptions;
+    transform: SwcOptions;
+    minify: boolean | JsMinifyOptions;
 };
 
 type Options = Format<Partial<CompleteOptions>>;

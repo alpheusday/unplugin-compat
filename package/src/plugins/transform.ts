@@ -6,16 +6,17 @@ import type { TransformResult, UnpluginOptions } from "unplugin";
 import { transform as swcTransform } from "@swc/core";
 import { toMerged } from "es-toolkit";
 
+import { FILTER_JS } from "#/consts/filter";
 import { OPTIONS_TRANSFORM_DEFAULT } from "#/consts/swc";
 
 type TransformPluginOptions = {
     name: string;
-    swc?: SwcOptions;
+    options?: SwcOptions;
 };
 
 const transformPlugin = ({
     name,
-    swc,
+    options,
 }: TransformPluginOptions): UnpluginOptions[] => {
     const transform:
         | ObjectHook<
@@ -30,13 +31,20 @@ const transformPlugin = ({
           >
         | undefined = {
         order: "pre",
+        filter: {
+            id: {
+                include: [
+                    FILTER_JS,
+                ],
+            },
+        },
         handler: async (code: string): Promise<TransformResult> => {
-            const options: SwcOptions = toMerged(
+            const opts: SwcOptions = toMerged(
                 OPTIONS_TRANSFORM_DEFAULT,
-                swc ?? {},
+                options ?? {},
             );
 
-            const result: Output = await swcTransform(code, options);
+            const result: Output = await swcTransform(code, opts);
 
             return {
                 code: result.code,

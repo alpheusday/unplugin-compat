@@ -3,6 +3,11 @@ import type { JsMinifyOptions, Options } from "@swc/core";
 const OPTIONS_TRANSFORM_DEFAULT = {
     jsc: {
         target: "es5",
+        parser: {
+            syntax: "typescript",
+            tsx: true,
+            decorators: true,
+        },
     },
     minify: false,
 } as const satisfies Options;

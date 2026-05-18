@@ -6,10 +6,11 @@ import type { Options } from "#/@types/options";
 import { createUnplugin } from "unplugin";
 
 import { configPlugin } from "#/plugins/config";
+import { minifyPlugin } from "#/plugins/minify";
 import { transformPlugin } from "#/plugins/transform";
 import { name } from "../package.json";
 
-const plugin = (options: Options): Plugin | Plugin[] => {
+const plugin = (options?: Options): Plugin | Plugin[] => {
     const factory: UnpluginFactory<undefined> = (): UnpluginOptions[] => {
         return [
             ...configPlugin({
@@ -17,7 +18,14 @@ const plugin = (options: Options): Plugin | Plugin[] => {
             }),
             ...transformPlugin({
                 name,
-                swc: options.swc,
+                options: options?.transform,
+            }),
+            ...minifyPlugin({
+                name,
+                options:
+                    typeof options?.minify === "boolean"
+                        ? void 0
+                        : options?.minify,
             }),
         ];
     };
