@@ -1,21 +1,32 @@
 packages:
-  - ./package
-  - ./test
+    - ./package
+    - ./test
 
 autoInstallPeers: false
 strictPeerDependencies: false
 
 allowBuilds:
-  '@swc/core': true
-  esbuild: false
+    "@swc/core": true
+    esbuild: false
+
+catalogs:
+    dep:
+        rolldown: ^1.0.0
+        vite: ^8.0.0
+    dev:
+        rolldown: 1.0.0
+        vite: 8.0.0
+    peer:
+        rolldown: ^1.0.0
+        vite: ^8.0.0
 
 minimumReleaseAge: 1440
 
 minimumReleaseAgeExclude:
-  # config
-  - "@apst/biome"
-  - "@apst/tsconfig"
-  - "@apst/tsdown"
-  # tsdown
-  - "@tsdown/*"
-  - "tsdown"
+    # config
+    - "@apst/biome"
+    - "@apst/tsconfig"
+    - "@apst/tsdown"
+    # tsdown
+    - "@tsdown/*"
+    - "tsdown"

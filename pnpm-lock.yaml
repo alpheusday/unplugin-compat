@@ -4,6 +4,15 @@ settings:
   autoInstallPeers: false
   excludeLinksFromLockfile: false
 
+catalogs:
+  dev:
+    rolldown:
+      specifier: 1.0.0
+      version: 1.0.0
+    vite:
+      specifier: 8.0.0
+      version: 8.0.0
+
 importers:
 
   .:
@@ -49,14 +58,17 @@ importers:
         version: 3.0.0
     devDependencies:
       rolldown:
-        specifier: 1.0.0
+        specifier: catalog:dev
         version: 1.0.0
       vite:
-        specifier: 8.0.0
+        specifier: catalog:dev
         version: 8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(yaml@2.8.3)
 
   test:
     dependencies:
+      rolldown:
+        specifier: catalog:dev
+        version: 1.0.0
       unplugin-compat:
         specifier: workspace:^
         version: link:../package
