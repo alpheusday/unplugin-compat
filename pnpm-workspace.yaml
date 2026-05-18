@@ -12,8 +12,7 @@ allowBuilds:
 
 catalogs:
     dep:
-        rolldown: ^1.0.0
-        vite: ^8.0.0
+        unplugin: ^3.0.0
     dev:
         rolldown: 1.0.0
         vite: 8.0.0

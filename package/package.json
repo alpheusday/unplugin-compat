@@ -64,7 +64,7 @@
         "@swc/core": "^1.15.33",
         "es-toolkit": "^1.40.0",
         "ts-vista": "~0.2.3",
-        "unplugin": "^3.0.0"
+        "unplugin": "catalog:dep"
     },
     "devDependencies": {
         "rolldown": "catalog:dev",

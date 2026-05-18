@@ -5,6 +5,10 @@ settings:
   excludeLinksFromLockfile: false
 
 catalogs:
+  dep:
+    unplugin:
+      specifier: ^3.0.0
+      version: 3.0.0
   dev:
     rolldown:
       specifier: 1.0.0
@@ -72,7 +76,7 @@ importers:
         specifier: ~0.2.3
         version: 0.2.3
       unplugin:
-        specifier: ^3.0.0
+        specifier: catalog:dep
         version: 3.0.0
     devDependencies:
       rolldown:
@@ -87,6 +91,9 @@ importers:
       rolldown:
         specifier: catalog:dev
         version: 1.0.0
+      unplugin:
+        specifier: catalog:dep
+        version: 3.0.0
       unplugin-compat:
         specifier: workspace:^
         version: link:../package

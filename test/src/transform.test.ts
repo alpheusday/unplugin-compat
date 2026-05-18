@@ -1,3 +1,4 @@
+import type { UnpluginOptions } from "unplugin";
 import type { TransformPluginOptions } from "unplugin-compat/plugins/transform";
 
 import { transformPlugin } from "unplugin-compat/plugins/transform";
@@ -11,51 +12,51 @@ type TransformHook = {
     order: string;
 };
 
-describe("transformPlugin", () => {
+describe("transformPlugin", (): void => {
     const name: string = "test-plugin";
 
-    describe("with default options", () => {
+    describe("with default options", (): void => {
         const options: TransformPluginOptions = {
             name,
         };
-        const plugins = transformPlugin(options);
-        const plugin = plugins[0];
+        const plugins: UnpluginOptions[] = transformPlugin(options);
+        const plugin: UnpluginOptions | undefined = plugins[0];
 
         if (plugin === void 0) {
             throw new Error("Plugin is undefined");
         }
 
-        it("returns an array with one plugin", () => {
+        it("returns an array with one plugin", (): void => {
             expect(plugins).toHaveLength(1);
         });
 
-        it("sets the plugin name with /transform suffix", () => {
+        it("sets the plugin name with /transform suffix", (): void => {
             expect(plugin.name).toBe(`${name}/transform`);
         });
 
-        it("has rolldown transform hook", () => {
+        it("has rolldown transform hook", (): void => {
             expect(plugin.rolldown).toBeDefined();
             expect(plugin.rolldown?.transform).toBeDefined();
         });
 
-        it("has vite transform hook", () => {
+        it("has vite transform hook", (): void => {
             expect(plugin.vite).toBeDefined();
             expect(plugin.vite?.transform).toBeDefined();
         });
 
-        it("shares the same transform hook between rolldown and vite", () => {
+        it("shares the same transform hook between rolldown and vite", (): void => {
             expect(plugin.rolldown?.transform).toBe(plugin.vite?.transform);
         });
 
-        describe("transform hook", () => {
+        describe("transform hook", (): void => {
             const hook: TransformHook = plugin.rolldown
                 ?.transform as TransformHook;
 
-            it("has order pre", () => {
+            it("has order pre", (): void => {
                 expect(hook.order).toBe("pre");
             });
 
-            it("downlevels arrow functions to function expressions", async () => {
+            it("downlevels arrow functions to function expressions", async (): Promise<void> => {
                 const input: string = "const fn = () => 1;";
                 const result: {
                     code: string;
@@ -67,7 +68,7 @@ describe("transformPlugin", () => {
                 expect(result.code).not.toContain("=>");
             });
 
-            it("downlevels const to var", async () => {
+            it("downlevels const to var", async (): Promise<void> => {
                 const input: string = "const x = 1;";
                 const result: {
                     code: string;
@@ -78,7 +79,7 @@ describe("transformPlugin", () => {
                 expect(result.code).not.toContain("const ");
             });
 
-            it("downlevels template literals to string concatenation", async () => {
+            it("downlevels template literals to string concatenation", async (): Promise<void> => {
                 // biome-ignore lint/suspicious/noTemplateCurlyInString: test input contains JS template literal interpolation
                 const input: string = "const greet = `Hello ${name}!`;";
                 const result: {
@@ -89,19 +90,20 @@ describe("transformPlugin", () => {
                 expect(result.code).toContain("concat");
             });
 
-            it("returns undefined map by default", async () => {
+            it("returns source map by default", async (): Promise<void> => {
                 const input: string = "const x = 1;";
                 const result: {
                     code: string;
                     map?: string;
                 } = await hook.handler(input);
 
-                expect(result.map).toBeUndefined();
+                expect(result.map).toBeDefined();
+                expect(result.map).toBeTypeOf("string");
             });
         });
     });
 
-    describe("with custom options", () => {
+    describe("with custom options", (): void => {
         const options: TransformPluginOptions = {
             name,
             options: {
@@ -110,8 +112,8 @@ describe("transformPlugin", () => {
                 },
             },
         };
-        const plugins = transformPlugin(options);
-        const plugin = plugins[0];
+        const plugins: UnpluginOptions[] = transformPlugin(options);
+        const plugin: UnpluginOptions | undefined = plugins[0];
 
         if (plugin === void 0) {
             throw new Error("Plugin is undefined");
@@ -119,7 +121,7 @@ describe("transformPlugin", () => {
 
         const hook: TransformHook = plugin.rolldown?.transform as TransformHook;
 
-        it("does not downlevel arrow functions when target is es2015", async () => {
+        it("does not downlevel arrow functions when target is es2015", async (): Promise<void> => {
             const input: string = "const fn = () => 1;";
             const result: {
                 code: string;
@@ -129,7 +131,7 @@ describe("transformPlugin", () => {
             expect(result.code).toContain("=>");
         });
 
-        it("does not downlevel const when target is es2015", async () => {
+        it("does not downlevel const when target is es2015", async (): Promise<void> => {
             const input: string = "const x = 1;";
             const result: {
                 code: string;
