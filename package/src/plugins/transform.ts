@@ -39,10 +39,22 @@ const transformPlugin = ({
             },
         },
         handler: async (code: string): Promise<TransformResult> => {
-            const opts: SwcOptions = toMerged(
+            const merged: SwcOptions = toMerged(
                 OPTIONS_TRANSFORM_DEFAULT,
                 options ?? {},
             );
+
+            /**
+             * SWC does not allow `env` and `jsc.target` together,
+             * when `env` is provided, clear `jsc.target` to avoid the conflict.
+             */
+            if (merged.env) {
+                if (merged.jsc) {
+                    merged.jsc.target = void 0;
+                }
+            }
+
+            const opts: SwcOptions = merged;
 
             const result: Output = await swcTransform(code, opts);
 
