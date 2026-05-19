@@ -5,6 +5,7 @@ import type {
     MinifyOptions,
     Options,
     TransformOptions,
+    TsConfig,
 } from "#/@types/options";
 
 import { createUnplugin } from "unplugin";
@@ -27,6 +28,7 @@ const plugin = (options?: Options): Plugin | Plugin[] => {
             ...transformPlugin({
                 name,
                 options: options?.transform,
+                tsconfig: options?.tsconfig,
             }),
         ];
 
@@ -48,5 +50,5 @@ const plugin = (options?: Options): Plugin | Plugin[] => {
     return createUnplugin(factory).rolldown();
 };
 
-export type { MinifyOptions, Options, TransformOptions };
+export type { MinifyOptions, Options, TransformOptions, TsConfig };
 export { OPTIONS_TRANSFORM_DEFAULT, plugin as compat };

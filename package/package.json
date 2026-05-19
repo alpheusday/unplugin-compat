@@ -52,6 +52,11 @@
             "import": "./dist/plugins/minify.mjs",
             "require": "./dist/plugins/minify.js"
         },
+        "./functions/tsconfig": {
+            "types": "./dist/functions/tsconfig.d.ts",
+            "import": "./dist/functions/tsconfig.mjs",
+            "require": "./dist/functions/tsconfig.js"
+        },
         "./package.json": "./package.json"
     },
     "main": "./dist/rolldown.js",
@@ -61,8 +66,9 @@
         "dist"
     ],
     "dependencies": {
-        "@swc/core": "^1.15.33",
+        "@swc/core": "catalog:dep",
         "es-toolkit": "^1.40.0",
+        "get-tsconfig": "catalog:dep",
         "ts-vista": "~0.2.3",
         "unplugin": "catalog:dep"
     },

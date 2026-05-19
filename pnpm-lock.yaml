@@ -6,6 +6,12 @@ settings:
 
 catalogs:
   dep:
+    '@swc/core':
+      specifier: ^1.15.33
+      version: 1.15.33
+    get-tsconfig:
+      specifier: ^4.14.0
+      version: 4.14.0
     unplugin:
       specifier: ^3.0.0
       version: 3.0.0
@@ -67,11 +73,14 @@ importers:
   package:
     dependencies:
       '@swc/core':
-        specifier: ^1.15.33
+        specifier: catalog:dep
         version: 1.15.33
       es-toolkit:
         specifier: ^1.40.0
         version: 1.46.1
+      get-tsconfig:
+        specifier: catalog:dep
+        version: 4.14.0
       ts-vista:
         specifier: ~0.2.3
         version: 0.2.3
@@ -88,6 +97,12 @@ importers:
 
   test:
     dependencies:
+      '@swc/core':
+        specifier: catalog:dep
+        version: 1.15.33
+      get-tsconfig:
+        specifier: catalog:dep
+        version: 4.14.0
       rolldown:
         specifier: catalog:dev
         version: 1.0.0
@@ -794,6 +809,9 @@ packages:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+
+  get-tsconfig@4.14.0:
+    resolution: {integrity: sha512-yTb+8DXzDREzgvYmh6s9vHsSVCHeC0G3PI5bEXNBHtmshPnO+S5O7qgLEOn0I5QvMy6kpZN8K1NKGyilLb93wA==}
 
   get-tsconfig@5.0.0-beta.5:
     resolution: {integrity: sha512-/6gFNr0N04nob252sTQxyFLi3eKFRqIg1I87YcqAMT1i6SQrSF6KujUEQrtrjMV0H/eejTCltLdDSTEMzHbnsQ==}
@@ -1699,6 +1717,10 @@ snapshots:
 
   fsevents@2.3.3:
     optional: true
+
+  get-tsconfig@4.14.0:
+    dependencies:
+      resolve-pkg-maps: 1.0.0
 
   get-tsconfig@5.0.0-beta.5:
     dependencies:

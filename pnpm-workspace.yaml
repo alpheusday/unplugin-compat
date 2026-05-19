@@ -12,6 +12,8 @@ allowBuilds:
 
 catalogs:
     dep:
+        "@swc/core": ^1.15.33
+        get-tsconfig: ^4.14.0
         unplugin: ^3.0.0
     dev:
         rolldown: 1.0.0

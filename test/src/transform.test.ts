@@ -5,7 +5,10 @@ import { transformPlugin } from "unplugin-compat/plugins/transform";
 import { describe, expect, it } from "vitest";
 
 type TransformHook = {
-    handler: (code: string) => Promise<{
+    handler: (
+        code: string,
+        id: string,
+    ) => Promise<{
         code: string;
         map?: string;
     }>;
@@ -14,10 +17,12 @@ type TransformHook = {
 
 describe("transformPlugin", (): void => {
     const name: string = "test-plugin";
+    const id: string = "/test/file.ts";
 
     describe("with default options", (): void => {
         const options: TransformPluginOptions = {
             name,
+            tsconfig: false,
         };
         const plugins: UnpluginOptions[] = transformPlugin(options);
         const plugin: UnpluginOptions | undefined = plugins[0];
@@ -61,7 +66,7 @@ describe("transformPlugin", (): void => {
                 const result: {
                     code: string;
                     map?: string;
-                } = await hook.handler(input);
+                } = await hook.handler(input, id);
 
                 expect(result.code).toContain("function");
                 expect(result.code).toContain("return");
@@ -73,7 +78,7 @@ describe("transformPlugin", (): void => {
                 const result: {
                     code: string;
                     map?: string;
-                } = await hook.handler(input);
+                } = await hook.handler(input, id);
 
                 expect(result.code).toContain("var");
                 expect(result.code).not.toContain("const ");
@@ -85,7 +90,7 @@ describe("transformPlugin", (): void => {
                 const result: {
                     code: string;
                     map?: string;
-                } = await hook.handler(input);
+                } = await hook.handler(input, id);
 
                 expect(result.code).toContain("concat");
             });
@@ -95,7 +100,7 @@ describe("transformPlugin", (): void => {
                 const result: {
                     code: string;
                     map?: string;
-                } = await hook.handler(input);
+                } = await hook.handler(input, id);
 
                 expect(result.map).toBeDefined();
                 expect(result.map).toBeTypeOf("string");
@@ -106,6 +111,7 @@ describe("transformPlugin", (): void => {
     describe("with custom options", (): void => {
         const options: TransformPluginOptions = {
             name,
+            tsconfig: false,
             options: {
                 jsc: {
                     target: "es2015",
@@ -126,7 +132,7 @@ describe("transformPlugin", (): void => {
             const result: {
                 code: string;
                 map?: string;
-            } = await hook.handler(input);
+            } = await hook.handler(input, id);
 
             expect(result.code).toContain("=>");
         });
@@ -136,7 +142,7 @@ describe("transformPlugin", (): void => {
             const result: {
                 code: string;
                 map?: string;
-            } = await hook.handler(input);
+            } = await hook.handler(input, id);
 
             expect(result.code).toContain("const ");
         });

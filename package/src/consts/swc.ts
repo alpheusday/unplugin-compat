@@ -10,11 +10,8 @@ const OPTIONS_TRANSFORM_DEFAULT = {
     jsc: {
         parser: {
             syntax: "typescript",
-            tsx: true,
-            decorators: true,
         },
         target: "es3",
-        keepClassNames: true,
         preserveAllComments: true,
     },
     minify: false,
