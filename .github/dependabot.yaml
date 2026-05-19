@@ -1,0 +1,24 @@
+version: 2
+updates:
+    - package-ecosystem: "npm"
+      directory: "/"
+      schedule:
+          interval: "daily"
+          time: "00:00"
+          timezone: "Etc/UTC"
+      cooldown:
+          default-days: 1
+          include:
+              - "*"
+      commit-message:
+          prefix: "chore"
+      ignore:
+          # dep
+          - dependency-name: "@swc/core"
+          - dependency-name: "es-toolkit"
+          - dependency-name: "get-tsconfig"
+          - dependency-name: "ts-vista"
+          - dependency-name: "unplugin"
+          # peer
+          - dependency-name: "rolldown"
+          - dependency-name: "vite"
