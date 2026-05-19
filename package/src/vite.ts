@@ -24,7 +24,7 @@ import { name } from "../package.json";
  */
 const plugin = (options?: Options): Plugin | Plugin[] => {
     const factory: UnpluginFactory<undefined> = (): UnpluginOptions[] => {
-        return [
+        const plugins: UnpluginOptions[] = [
             ...configPlugin({
                 name,
             }),
@@ -33,14 +33,20 @@ const plugin = (options?: Options): Plugin | Plugin[] => {
                 options: options?.transform,
                 tsconfig: options?.tsconfig,
             }),
-            ...minifyPlugin({
-                name,
-                options:
-                    typeof options?.minify === "boolean"
-                        ? void 0
-                        : options?.minify,
-            }),
         ];
+
+        const minify: boolean | MinifyOptions = options?.minify ?? true;
+
+        if (minify !== false) {
+            plugins.push(
+                ...minifyPlugin({
+                    name,
+                    options: typeof minify === "boolean" ? void 0 : minify,
+                }),
+            );
+        }
+
+        return plugins;
     };
 
     return createUnplugin(factory).vite();

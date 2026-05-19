@@ -32,14 +32,13 @@ const plugin = (options?: Options): Plugin | Plugin[] => {
             }),
         ];
 
-        if (options?.minify !== void 0) {
+        const minify: boolean | MinifyOptions = options?.minify ?? false;
+
+        if (minify !== false) {
             plugins.push(
                 ...minifyPlugin({
                     name,
-                    options:
-                        typeof options.minify === "boolean"
-                            ? void 0
-                            : options.minify,
+                    options: typeof minify === "boolean" ? void 0 : minify,
                 }),
             );
         }
