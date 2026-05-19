@@ -28,12 +28,21 @@ const plugin = (options?: Options): Plugin | Plugin[] => {
             ...configPlugin({
                 name,
             }),
-            ...transformPlugin({
-                name,
-                options: options?.transform,
-                tsconfig: options?.tsconfig,
-            }),
         ];
+
+        const transform: boolean | TransformOptions =
+            options?.transform ?? true;
+
+        if (transform !== false) {
+            plugins.push(
+                ...transformPlugin({
+                    name,
+                    options:
+                        typeof transform === "boolean" ? void 0 : transform,
+                    tsconfig: options?.tsconfig,
+                }),
+            );
+        }
 
         const minify: boolean | MinifyOptions = options?.minify ?? true;
 

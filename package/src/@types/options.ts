@@ -22,7 +22,7 @@ type CompleteOptions = {
      *
      * By default, it is `OPTIONS_TRANSFORM_DEFAULT`.
      */
-    transform: TransformOptions;
+    transform: boolean | TransformOptions;
     /**
      * Minify options.
      *
