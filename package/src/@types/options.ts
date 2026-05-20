@@ -20,16 +20,24 @@ type CompleteOptions = {
     /**
      * Transform options.
      *
-     * By default, it is `OPTIONS_TRANSFORM_DEFAULT`.
+     * Options merging based on the following priority:
+     *
+     * - `OPTIONS_TRANSFORM_DEFAULT` > `tsconfig.json` > `user options`
+     *
+     * By default, it is `true`.
      */
     transform: boolean | TransformOptions;
     /**
      * Minify options.
      *
+     * Options merging based on the following priority:
+     *
+     * - `OPTIONS_MINIFY_DEFAULT` > `user options`
+     *
      * By default, it is:
      *
      * - rolldown - `false`
-     * - vite - `OPTIONS_MINIFY_DEFAULT`
+     * - vite - `true`
      */
     minify: boolean | MinifyOptions;
     /**
