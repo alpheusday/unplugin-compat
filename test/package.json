@@ -12,6 +12,6 @@
         "rolldown": "catalog:dev",
         "unplugin": "catalog:dep",
         "unplugin-compat": "workspace:^",
-        "vitest": "^4.1.6"
+        "vitest": "^4.1.7"
     }
 }
