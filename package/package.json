@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/vitejs/vite-plugin-registry/refs/heads/main/data/schema/extended-package-json.schema.json",
     "name": "unplugin-compat",
     "version": "0.1.0",
     "description": "A plugin for JavaScript compatibility",
@@ -86,6 +87,21 @@
         },
         "vite": {
             "optional": true
+        }
+    },
+    "compatiblePackages": {
+        "schemaVersion": 1,
+        "rollup": {
+            "type": "incompatible",
+            "reason": "Uses Rolldown-specific APIs"
+        },
+        "rolldown": {
+            "type": "compatible",
+            "versions": "^1.0.0"
+        },
+        "vite": {
+            "type": "compatible",
+            "versions": "^8.0.0"
         }
     }
 }
