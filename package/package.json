@@ -101,7 +101,7 @@
         },
         "vite": {
             "type": "compatible",
-            "versions": "^8.0.0"
+            "versions": "^8.0.12"
         }
     }
 }
