@@ -17,7 +17,7 @@ import {
 import { configPlugin } from "#/plugins/config";
 import { minifyPlugin } from "#/plugins/minify";
 import { transformPlugin } from "#/plugins/transform";
-import { name } from "../package.json";
+import { name } from "#/root/package.json";
 
 /**
  * A plugin for JavaScript compatibility.
