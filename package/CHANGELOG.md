@@ -7,6 +7,7 @@
 ### What's New
 
 - add ES3/ES5/ES2015 presets
+- export `OPTIONS_MINIFY_DEFAULT` in sub path - `rolldown`
 - add vite registry metadata
 
 ### What's Changed

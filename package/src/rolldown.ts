@@ -60,6 +60,7 @@ const plugin = (options?: Options): Plugin | Plugin[] => {
 
 export type { Presets } from "#/presets";
 
+export { OPTIONS_MINIFY_DEFAULT } from "#/consts/swc";
 export { minifiedPresets, presets } from "#/presets";
 export type { MinifyOptions, Options, TransformOptions, TsConfig };
 export { OPTIONS_TRANSFORM_DEFAULT, plugin as compat };
