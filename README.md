@@ -67,7 +67,7 @@ import { compat, presets } from "unplugin-compat/rolldown";
 export default defineConfig({
     input: "./src/index.ts",
     plugins: [
-        compat(presets.ES2015),
+        compat(presets.ES5),
     ],
 });
 ```
