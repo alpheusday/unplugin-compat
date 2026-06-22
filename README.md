@@ -1,6 +1,12 @@
 # Unplugin Compat
 
-A plugin for downleveling compatibility.
+A plugin for legacy environments.
+
+[OXC](https://oxc.rs) does not support downleveling modern JavaScript syntax to ES5 and other legacy ECMAScript targets. As a result, applications built with Rolldown or Vite may not run correctly in older environments.
+
+This plugin integrates [SWC](https://swc.rs) to transform and minify code for older ECMAScript targets. It includes several built-in presets and targets ES5 by default.
+
+Currently, the plugin is distributed as an [unplugin](https://unplugin.unjs.io) adapter and works with both Rolldown and Vite.
 
 ## Installation
 
@@ -48,6 +54,33 @@ import { compat } from "unplugin-compat/vite";
 export default defineConfig({
     plugins: [
         compat(),
+    ],
+});
+```
+
+It is possible to use the plugin with presets:
+
+```ts
+import { defineConfig } from "rolldown";
+import { compat, presets } from "unplugin-compat/rolldown";
+
+export default defineConfig({
+    input: "./src/index.ts",
+    plugins: [
+        compat(presets.ES2015),
+    ],
+});
+```
+
+Or with `minifiedPresets` in Vite:
+
+```ts
+import { defineConfig } from "vite";
+import { compat, minifiedPresets } from "unplugin-compat/vite";
+
+export default defineConfig({
+    plugins: [
+        compat(minifiedPresets.ES3),
     ],
 });
 ```

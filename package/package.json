@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/vitejs/vite-plugin-registry/refs/heads/main/data/schema/extended-package-json.schema.json",
     "name": "unplugin-compat",
     "version": "0.1.0",
-    "description": "A plugin for JavaScript compatibility",
+    "description": "A plugin for legacy environments",
     "keywords": [
         "compat",
         "vite",
