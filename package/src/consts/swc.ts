@@ -3,33 +3,21 @@ import type {
     Options as TransformOptions,
 } from "@swc/core";
 
+import { PRESET_ES5_MINIFY, PRESET_ES5_TRANSFORM } from "#/presets/targets/es5";
+
 /**
  * Default transform options.
  */
-const OPTIONS_TRANSFORM_DEFAULT = {
-    jsc: {
-        parser: {
-            syntax: "typescript",
-        },
-        target: "es3",
-        preserveAllComments: true,
-    },
+const OPTIONS_TRANSFORM_DEFAULT: TransformOptions = {
+    ...PRESET_ES5_TRANSFORM,
     minify: false,
-    sourceMaps: true,
-} as const satisfies TransformOptions;
+};
 
 /**
  * Default minify options.
  */
-const OPTIONS_MINIFY_DEFAULT = {
-    compress: true,
-    mangle: true,
-    ecma: 3,
-    keep_classnames: false,
-    keep_fnames: false,
-    module: "unknown",
-    safari10: true,
-    sourceMap: true,
-} as const satisfies MinifyOptions;
+const OPTIONS_MINIFY_DEFAULT: MinifyOptions = {
+    ...PRESET_ES5_MINIFY,
+};
 
 export { OPTIONS_MINIFY_DEFAULT, OPTIONS_TRANSFORM_DEFAULT };

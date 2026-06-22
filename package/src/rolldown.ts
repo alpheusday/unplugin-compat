@@ -58,5 +58,8 @@ const plugin = (options?: Options): Plugin | Plugin[] => {
     return createUnplugin(factory).rolldown();
 };
 
+export type { Presets } from "#/presets";
+
+export { minifiedPresets, presets } from "#/presets";
 export type { MinifyOptions, Options, TransformOptions, TsConfig };
 export { OPTIONS_TRANSFORM_DEFAULT, plugin as compat };

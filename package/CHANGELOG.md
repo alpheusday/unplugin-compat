@@ -1,7 +1,12 @@
 ## Next
 
+### Breaking Changes
+
+- set default options to ES5 preset
+
 ### What's New
 
+- add ES3/ES5/ES2015 presets
 - add vite registry metadata
 
 ### What's Changed
