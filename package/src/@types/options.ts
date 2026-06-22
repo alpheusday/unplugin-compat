@@ -22,7 +22,7 @@ type CompleteOptions = {
      *
      * Options merging based on the following priority:
      *
-     * - `OPTIONS_TRANSFORM_DEFAULT` > `tsconfig.json` > `user options`
+     * - `user options` > `tsconfig.json` > `OPTIONS_TRANSFORM_DEFAULT`
      *
      * By default, it is `true`.
      */
@@ -32,7 +32,7 @@ type CompleteOptions = {
      *
      * Options merging based on the following priority:
      *
-     * - `OPTIONS_MINIFY_DEFAULT` > `user options`
+     * - `user options` > `OPTIONS_MINIFY_DEFAULT`
      *
      * By default, it is:
      *
@@ -50,7 +50,7 @@ type CompleteOptions = {
      *
      * Options merging based on the following priority:
      *
-     * - `OPTIONS_TRANSFORM_DEFAULT` > `tsconfig.json` > `user options`
+     * - `user options` > `tsconfig.json` > `OPTIONS_TRANSFORM_DEFAULT`
      *
      * By default, it is `undefined`.
      */
