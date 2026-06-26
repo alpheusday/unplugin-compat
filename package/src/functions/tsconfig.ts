@@ -14,7 +14,6 @@ import { getTsconfig } from "get-tsconfig";
 type CompilerOptions = NonNullable<TsConfigJson["compilerOptions"]>;
 
 type ResolveCompilerOptionsOptions = {
-    id: string;
     tsconfig: TsConfig;
     cache: Map<string, TsConfigResult>;
 };
@@ -23,7 +22,6 @@ type ResolveCompilerOptionsOptions = {
  * Resolve `compilerOptions` from tsconfig.
  */
 const resolveCompilerOptions = ({
-    id,
     tsconfig,
     cache,
 }: ResolveCompilerOptionsOptions): CompilerOptions => {
@@ -33,10 +31,9 @@ const resolveCompilerOptions = ({
         tsconfig === true || tsconfig === void 0 ? void 0 : tsconfig;
 
     const result: TsConfigResult | null = getTsconfig(
-        id,
+        void 0,
         configName,
         cache,
-        true,
     );
 
     return result?.config.compilerOptions ?? {};

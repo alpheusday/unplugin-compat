@@ -3,6 +3,7 @@
 ### What's Changed
 
 - set React runtime to `automatic` in preset
+- resolve compiler options file from current working directory
 
 ## 0.2.0 (2026-06-22)
 

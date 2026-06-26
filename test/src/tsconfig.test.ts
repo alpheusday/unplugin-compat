@@ -251,11 +251,9 @@ describe("mapCompilerOptions", (): void => {
 
 describe("resolveCompilerOptions", (): void => {
     it("returns empty object when tsconfigFile is false", (): void => {
-        const id: string = "/test/file.ts";
         const cache: Map<string, TsConfigResult> = new Map();
 
         const result: CompilerOptions = resolveCompilerOptions({
-            id,
             tsconfig: false,
             cache,
         });
@@ -263,16 +261,16 @@ describe("resolveCompilerOptions", (): void => {
         expect(result).toEqual({});
     });
 
-    it("returns empty object when tsconfig is not found", (): void => {
-        const id: string = "/nonexistent/path/file.ts";
+    it("resolves compilerOptions from current working directory", (): void => {
         const cache: Map<string, TsConfigResult> = new Map();
 
         const result: CompilerOptions = resolveCompilerOptions({
-            id,
             tsconfig: true,
             cache,
         });
 
-        expect(result).toEqual({});
+        expect(result.jsx).toBeDefined();
+        expect(result.experimentalDecorators).toBe(true);
+        expect(result.emitDecoratorMetadata).toBe(true);
     });
 });

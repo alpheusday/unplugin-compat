@@ -51,7 +51,6 @@ const transformPlugin = ({
         },
         handler: async (code: string, id: string): Promise<TransformResult> => {
             const compilerOptions: CompilerOptions = resolveCompilerOptions({
-                id,
                 tsconfig,
                 cache,
             });
