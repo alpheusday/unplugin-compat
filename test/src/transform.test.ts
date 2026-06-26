@@ -57,8 +57,8 @@ describe("transformPlugin", (): void => {
             const hook: TransformHook = plugin.rolldown
                 ?.transform as TransformHook;
 
-            it("has order pre", (): void => {
-                expect(hook.order).toBe("pre");
+            it("has order post", (): void => {
+                expect(hook.order).toBe("post");
             });
 
             it("downlevels arrow functions to function expressions", async (): Promise<void> => {

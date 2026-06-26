@@ -41,7 +41,7 @@ const transformPlugin = ({
               }
           >
         | undefined = {
-        order: "pre",
+        order: "post",
         filter: {
             id: {
                 include: [
