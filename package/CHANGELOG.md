@@ -1,3 +1,9 @@
+## Next
+
+### What's Changed
+
+- set React runtime to `automatic` in preset
+
 ## 0.2.0 (2026-06-22)
 
 ### Breaking Changes

@@ -11,6 +11,11 @@ const PRESET_ES3_TRANSFORM: TransformOptions = {
             tsx: true,
             decorators: true,
         },
+        transform: {
+            react: {
+                runtime: "automatic",
+            },
+        },
         target: "es3",
         loose: false,
         keepClassNames: true,
